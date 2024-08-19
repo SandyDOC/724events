@@ -5,6 +5,7 @@ import { useData } from "../../contexts/DataContext";
 import Modal from "../Modal";
 import ModalEvent from "../ModalEvent";
 
+
 import "./style.css";
 
 const PER_PAGE = 9;
@@ -16,8 +17,11 @@ const EventList = () => {
   const filteredEvents = (
     (!type
       ? data?.events
-      : data?.events) || []
-  ).filter((event, index) => {
+       // ajout de .filter((event) => event.type === type)) 
+       : data?.events.filter((event) => event.type === type))  || []
+      ).filter((event, index) => {
+  //     : data?.events) || []
+  // ).filter((event, index) => {
     if (
       (currentPage - 1) * PER_PAGE <= index &&
       PER_PAGE * currentPage > index
