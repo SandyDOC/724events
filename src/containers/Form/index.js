@@ -16,6 +16,7 @@ const Form = ({ onSuccess, onError }) => {
       try {
         await mockContactApi();
         setSending(false);
+        onSuccess(true); // Rajout onSucess
       } catch (err) {
         setSending(false);
         onError(err);
@@ -35,6 +36,7 @@ const Form = ({ onSuccess, onError }) => {
             label="Personel / Entreprise"
             type="large"
             titleEmpty
+            required
           />
           <Field placeholder="" label="Email" />
           <Button type={BUTTON_TYPES.SUBMIT} disabled={sending}>
