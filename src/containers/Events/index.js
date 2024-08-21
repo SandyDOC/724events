@@ -15,10 +15,11 @@ const EventList = () => {
   const [type, setType] = useState();
   const [currentPage, setCurrentPage] = useState(1);
   const filteredEvents = (
-    (!type
-      ? data?.events
-      // Ajout de .filter((event) => event.type === type)) 
-      : data?.events.filter((event) => event.type === type)) || []
+    (!type? data?.events : data?.events.filter((event) => event.type === type)) || []
+    // Ajout de .sort((evtA, evtB) => pour trier par dates en ordre croissant
+  ).sort((evtA, evtB) =>
+    new Date(evtA.date) < new Date(evtB.date) ? -1 : 1
+    // Ajout de .filter((event) => event.type === type))  pour filtrer par catégorie(type)
   ).filter((event, index) => {
 
     if (
@@ -29,12 +30,15 @@ const EventList = () => {
     }
     return false;
   });
+
   const changeType = (evtType) => {
     setCurrentPage(1);
     setType(evtType);
   };
+
   const pageNumber = Math.floor((filteredEvents?.length || 0) / PER_PAGE) + 1;
   const typeList = new Set(data?.events.map((event) => event.type));
+  
   return (
     <>
       {error && <div>An error occured</div>}

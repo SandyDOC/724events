@@ -32,17 +32,13 @@ export const DataProvider = ({ children }) => {
     // Ajout de 'data' et 'getData' aux dépendances pour éviter les appels infinis
   }, [data, getData]);
 
-  // Extraction des données de la dernière prestation
-  const last = data?.events?.[data.events.length - 1] || null;
-
+  
   return (
     <DataContext.Provider
       // eslint-disable-next-line react/jsx-no-constructed-context-values
       value={{
         data,
-        error,
-        // Ajout de 'last' au contexte
-        last,
+        error
       }}
     >
       {children}

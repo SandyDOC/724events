@@ -14,12 +14,11 @@ import { useData } from "../../contexts/DataContext";
 
 const Page = () => {
   // Extraction des valeurs de 'data' et 'last'(informations de la dernière prestation) de l'objet retourné par useData()(hook personnalisé de 'useContext' de React) à partir de la configuration de 'DataContext'
-  const { data, last } = useData();
+  const { data } = useData();
 
   // Calcul de la dernière prestation à partir des données
-  const lastEvent = data?.events
-    ? data.events.slice().sort((a, b) => new Date(b.date) - new Date(a.date))[0]
-    : null;
+  const lastEvent =  data?.events ? data.events.slice().sort((a, b) => new Date(b.date) - new Date(a.date))[0]: null;
+
 
   return <>
     <header>
@@ -29,8 +28,8 @@ const Page = () => {
       <section className="SliderContainer">
         <Slider />
       </section>
-      <section className="ServicesContainer">
-        <h2 className="Title" id="nos-services">Nos services</h2>
+      <section className="ServicesContainer" id="nos-services">
+        <h2 className="Title">Nos services</h2>
         <p>Nous organisons des événements sur mesure partout dans le monde</p>
         <div className="ListContainer">
           <ServiceCard imageSrc="/images/priscilla-du-preez-Q7wGvnbuwj0-unsplash1.png">
@@ -58,11 +57,11 @@ const Page = () => {
           </ServiceCard>
         </div>
       </section>
-      <section className="EventsContainer">
-        <h2 className="Title" id="nos-realisations">Nos réalisations</h2>
+      <section className="EventsContainer" id="nos-realisations">
+        <h2 className="Title">Nos réalisations</h2>
         <EventList />
       </section>
-      <section className="PeoplesContainer">
+      <section className="PeoplesContainer" id="notre-equipe">
         <h2 className="Title" id="notre-equipe">Notre équipe</h2>
         <p>Une équipe d’experts dédiés à l’ogranisation de vos événements</p>
         <div className="ListContainer">
@@ -123,13 +122,13 @@ const Page = () => {
     <footer className="row">
       <div className="col presta">
         <h3>Notre derniére prestation</h3>
-        {/* Ajout de 'last' vérifiant qu'il est bien défini afin d'afficher l'EventCard */}
-        {last ? (
+        {/* Ajout de 'lastEvent' vérifiant qu'il est bien défini afin d'afficher l'EventCard */}
+        {lastEvent ? (
           <EventCard
-            // Changement {last?.cover || ''} car si null ou undefined cela entraîne une erreur
-            imageSrc={last.cover}
-            title={last.title}
-            date={new Date(last.date)}
+            // Changement {lastEvent?.cover || ''} car si null ou undefined cela entraîne une erreur
+            imageSrc={lastEvent.cover}
+            title={lastEvent.title}
+            date={new Date(lastEvent.date)}
             small
             // Utilisation du type  
             label={lastEvent.type}
