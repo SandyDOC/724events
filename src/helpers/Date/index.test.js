@@ -1,19 +1,8 @@
 /**
- * 
- */
+ * Test de la fonction getMonth
+ **/
 
-// describe("Date helper", () => {
-//     describe("When getMonth is called", () => {
-//         it("the function return janvier for 2022-01-01 as date", () => {
-//             // to implement
-//         });
-//         it("the function return juillet for 2022-07-08 as date", () => {
-//             // to implement
-//         });
-//     });
-// })
-// Importez la fonction getMonth que vous souhaitez tester
-import { getMonth } from "../../helpers/Date"; // Ajustez le chemin selon la localisation de votre fichier
+import { getMonth } from "../../helpers/Date"; 
 
 describe("Date helper", () => {
     describe("When getMonth is called", () => {
