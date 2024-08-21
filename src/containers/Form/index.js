@@ -16,7 +16,8 @@ const Form = ({ onSuccess, onError }) => {
       try {
         await mockContactApi();
         setSending(false);
-        onSuccess(true); // Rajout onSucess
+        // Ajout onSuccess() comme action réussie permet l'envoi du formulaire et du message de confirmation ici
+        onSuccess(); 
       } catch (err) {
         setSending(false);
         onError(err);
