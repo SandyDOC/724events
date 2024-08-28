@@ -1,4 +1,4 @@
-/**
+/***
  * Test de la fonction getMonth
  **/
 import { getMonth } from "../../helpers/Date"; 
