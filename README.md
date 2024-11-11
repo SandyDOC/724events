@@ -13,3 +13,16 @@ L'application est le site d'une agence evenementielle.
 
 ## Tests
 - `yarn test`
+
+## Compétences du projet
+
+- Débugger un site web grâce aux Chrome DevTools
+- Rédiger un cahier de recette pour tester un site
+
+## Technologies utilisées
+
+- React Developer Tools
+- Node.js/npm
+- Yarn
+- jest
+
